@@ -2,9 +2,10 @@
   "name": "nghe-nhac",
   "version": "1.0.0",
   "description": "Website nghe nhac",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "start": "nodemon --inspect src/index.js",
+    "watch": "node-sass -w src/resources/scss/app.scss src/public/css/app.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -23,7 +24,15 @@
   },
   "homepage": "https://github.com/sangphamyn/Website_nghe_nhac#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "express": "^4.17.1",
+    "express-handlebars": "^5.2.1",
+    "express-session": "^1.17.1",
+    "multer": "^1.4.2",
+    "mysql": "^2.18.1",
+    "node-sass": "^5.0.0"
+  },
+  "devDependencies": {
     "nodemon": "^2.0.7"
   }
 }

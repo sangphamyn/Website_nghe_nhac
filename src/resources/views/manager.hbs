@@ -1,0 +1,81 @@
+<div class="tab-title">
+    <div class="song active" data-target=".uploadFormSong">
+        Bài hát
+    </div>
+    <div class="musician" data-target=".uploadFormMusician">
+        Nhạc sĩ
+    </div>
+    <div class="singer" data-target=".uploadFormSinger">
+        Ca sĩ
+    </div>
+</div>
+
+<form class="uploadForm uploadFormSong" enctype="multipart/form-data" action="/manager/uploadSong" method="post">
+    <div class="row">
+        <div class="col-6">
+            <p>Chọn file nhạc: </p>
+            <input type="file" name="userFile" class="userFile">
+        </div>
+        <div class="col-6">
+            <p>Ảnh bìa: </p>
+            <input type="file" name="userbg" class="userbg">
+        </div>
+    </div>
+    
+    <p>Tên bài hát: </p>
+    <input type="text" name="nameSong" class="nameSong">
+
+    <div class="row">
+        <div class="col-6">
+            <p>Nhạc sĩ: </p>
+            <select name="nameArtist" id="musician" onchange="this.form.submit()" required>
+                {{#each musicians}}
+                <option value="{{this.musician_id}}">{{this.musician_name}}</option>
+                {{/each}}
+            </select>
+        </div>
+        <div class="col-6">
+            <p>Ca sĩ: </p>
+            <select name="nameSinger" id="singer" required>
+                {{#each singers}}
+                <option value="{{this.singer_id}}">{{this.singer_name}}</option>
+                {{/each}}
+            </select>
+        </div>
+    </div>    
+    
+    <p>Lời: </p>
+    <textarea type="textarea" name="nameLyric" class="nameLyric"></textarea>
+    <button type="submit" name="submit" class="btn">Upload</button>
+</form>
+
+
+<form class="uploadForm uploadFormMusician hide" enctype="multipart/form-data" action="/manager/uploadMusician" method="post">
+
+    <p>Tên nhạc sĩ: </p>
+    <input type="text" name="nameMusician" class="nameMusician">
+    <p>Năm sinh: </p>
+    <input type="text" name="namsinh" class="namsinh">
+    <p>Ảnh: </p>
+    <input type="file" name="imgMusician" class="imgMusician">
+    <div class="row" style="margin-top: 1rem">
+        <input type="checkbox" name="isSinger" style="width: 10%;">
+        <span style="width: 90%; line-height: 3rem;">Đồng thời là ca sĩ</span>
+    </div>
+    <button type="submit" name="submit" class="btn">Upload</button>
+</form>
+
+<form class="uploadForm uploadFormSinger hide" enctype="multipart/form-data" action="/manager/uploadSinger" method="post">
+
+    <p>Tên ca sĩ: </p>
+    <input type="text" name="nameSinger" class="nameSinger">
+    <p>Năm sinh: </p>
+    <input type="text" name="namsinh" class="namsinh">
+    <p>Ảnh: </p>
+    <input type="file" name="imgSinger" class="imgSinger">
+    <div class="row" style="margin-top: 1rem">
+        <input type="checkbox" name="isMusician" style="width: 10%;">
+        <span style="width: 90%; line-height: 3rem;">Đồng thời là ca sĩ</span>
+    </div>
+    <button type="submit" name="submit" class="btn">Upload</button>
+</form>

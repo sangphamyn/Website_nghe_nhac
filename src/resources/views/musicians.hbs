@@ -1,0 +1,9 @@
+<h3>MUSICIAN</h3>
+    <div class="musicianhbs">
+        {{#each musicians}}
+            <div class="musicianInfor">
+                <div class="musician-bg" style="background-image: url({{this.musician_image}})"></div>
+                <p>{{this.musician_name}}</p>
+            </div>
+        {{/each}}
+    </div>

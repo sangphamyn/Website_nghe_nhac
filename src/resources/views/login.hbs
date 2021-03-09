@@ -1,0 +1,52 @@
+<div class="form-login">
+        <ul class="tab-group">
+                <li class="tab" data-target="#signup">
+                    <a>Sign up</a>
+                </li>
+                <li class="tab active" data-target="#login">
+                    <a>Log in</a>
+                </li>
+        </ul>
+        <div class="tab-content">
+            <div id="signup" class="content">
+                <h1>Sign Up for Free</h1>
+                <form action="/login/register" method="post">
+                    <div class="field-wrap">
+                        <label>
+                            Name<span>*</span>
+                        </label>
+                        <input type="text" name="name" required>
+                    </div>
+                    <div class="field-wrap">
+                        <label>Email<span>*</span></label>
+                        <input class="mail" type="email" name="email" required pattern="(.+)@(.+)(\.)(.+)">
+                    </div>
+                    <div class="field-wrap">
+                        <label>Password<span>*</span></label>
+                        <input type="password" name="password" required>
+                    </div>
+                    <button type="submit">Get Started</button>
+                </form>
+            </div>
+
+            <div id="login" class="content show">
+                <h1>Welcome Back!</h1>
+                <form action="/login" method="post">
+                    <p class="text-danger">{{alertMsg}}</p>
+                    <div class="field-wrap">
+                        <label>Email Address<span>*</span></label>
+                        <input class="mail" type="text" name="email">
+                    </div>
+                    <div class="field-wrap">
+                        <label>Password<span>*</span></label>
+                        <input type="password" name="password" required>
+                    </div>
+                    <p class="forgot">
+                        <a href="#0">Forgot Password?</a>
+                    </p>
+                    <button type="submit">LOG IN</button>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
