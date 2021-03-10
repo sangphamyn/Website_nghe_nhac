@@ -1,0 +1,26 @@
+<h3>Ca sĩ</h3>
+
+<div class="songshbs">
+    <h3 class="title">TẤT CẢ BÀI HÁT</h3>
+
+    <div class="list">
+        {{#each songs}}
+        <div class="list-song" data-link=".{{this.song_link}}" data-lyric=".{{this.song_lyric}}">
+            <div class="thumbnail">
+                <img src=".{{this.song_image}}">
+            </div>
+            <div class="column">
+                <h5 class="nameSong" data-link=".{{this.song_link}}">{{this.song_name}}</h4>
+                <h6 class="singer">{{this.singer_name}}</h6>
+            </div>
+            <div class="row">
+                <div class="addPlaylist btn">Thêm vào chờ phát</div>
+                {{#if ../isAdmin}}
+                    <div class="delSong btn">Xóa</div>
+                {{/if}}
+            </div>
+        </div>
+        {{/each}}
+    </div>
+    
+</div>

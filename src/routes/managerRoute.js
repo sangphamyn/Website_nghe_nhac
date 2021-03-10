@@ -19,7 +19,7 @@ var storage = multer.diskStorage({
             rand1 = rand;
         else {
             rand2 = rand;
-            rand1 = "1";
+            //rand1 = "1";
         }
         callback(null, rand);
     }
@@ -31,8 +31,9 @@ router.post('/uploadSong',upload.fields([{
 },{
     name: 'userFile', maxCount: 1
 }]), function(req, res) {
-    var linkSong = './uploads/' + rand2;
-    var linkImg = './uploads/' + rand1;
+    var linkSong = './uploads/' + rand1;
+    var linkImg = './uploads/' + rand2;
+    rand1 = "1";
     inputData ={
         song_link: linkSong,
         song_image: linkImg,
@@ -44,20 +45,18 @@ router.post('/uploadSong',upload.fields([{
     var sql='SELECT * FROM songs WHERE song_name =?';
     db.query(sql, [inputData.song_name] ,function (err, data, fields) {
         if(err) throw err
-        if(data.length>1){
-            var msg = inputData.song_name+ " đã có";
-            res.render('manager',{alertMsg_register:msg});
+        if(data.length>=1){
+            var msg = inputData.song_name+ " đã được tải lên từ trước";
+            res.redirect('/manager');
         }else{
             var sql = 'INSERT INTO songs SET ?';
             db.query(sql, inputData, function (err, data) {
                 if (err) throw err;
             });
             var msg ="Tải lên thành công";
-            
+            res.redirect('/songs');
         }
     })
-    res.redirect('/songs');
-
 })
 //Upload Song//
 //Upload musician

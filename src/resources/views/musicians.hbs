@@ -1,9 +1,9 @@
-<h3>MUSICIAN</h3>
+<h3 style="text-align: center;">NHẠC SĨ</h3>
     <div class="musicianhbs">
         {{#each musicians}}
-            <div class="musicianInfor">
+            <a href="/musicians/{{this.musician_id}}" class="musicianInfor">
                 <div class="musician-bg" style="background-image: url({{this.musician_image}})"></div>
                 <p>{{this.musician_name}}</p>
-            </div>
+            </a>
         {{/each}}
     </div>
