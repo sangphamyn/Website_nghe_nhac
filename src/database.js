@@ -1,12 +1,12 @@
 var mysql = require('mysql');
-var conn = mysql.createConnection({
-  host: 'localhost', // assign your host name
-  user: 'root',      //  assign your database username
-  password: '',      // assign your database password
-  database: 'nhac' // assign database Name
-}); 
-conn.connect(function(err) {
+var connection = mysql.createConnection(process.env.JAWSDB_URL);
+
+connection.connect();
+
+connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
   if (err) throw err;
-  console.log('Database is connected successfully !');
+
+  console.log('The solution is: ', rows[0].solution);
 });
-module.exports = conn;
+
+connection.end();
