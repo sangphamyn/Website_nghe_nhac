@@ -117,12 +117,12 @@ router.post('/uploadSinger',upload.single('imgSinger'), function(req, res) {
     var sql='SELECT * FROM singers WHERE singer_name =?';
     db.query(sql, [inputData.singer_name] ,function (err, data, fields) {
         if(err) throw err
-        if(data.length>1){
+        if(data.length>=1){
             var msg = inputData.singer_name+ " đã có";
             res.render('manager',{alertMsg_register:msg});
         }else{
             var sql = 'INSERT INTO singers SET ?';
-            db.query(sql, inputData, function (err, data) {
+            db.query(sql, [inputData], function (err, data) {
                 if (err) throw err;
             });
             var msg ="Tải lên thành công";

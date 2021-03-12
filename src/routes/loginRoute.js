@@ -27,7 +27,8 @@ router.post('/register', function(req, res, next) {
     inputData ={
         name: req.body.name,
         email: req.body.email,
-        password: req.body.password
+        password: req.body.password,
+        isAdmin: 0
     }
 
     var sql='SELECT * FROM users WHERE email =?';
