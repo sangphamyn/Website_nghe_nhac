@@ -22,12 +22,17 @@ class musiciansController{
 
             if (err) throw err;
             var kq = results;
-            
-            res.render('musicianInfo',{
-                songs: kq,
-                name: req.session.name,
-                isAdmin: req.session.isAdmin
-            });
+            var sql1 = `SELECT * FROM musicians WHERE musician_id = ${slug}`;
+            db.query(sql1, function(err, results) {
+                var kq2 = results;
+                var sql2 = `SELECT`
+                res.render('musicianInfo',{
+                    songs: kq,
+                    musician: results,
+                    name: req.session.name,
+                    isAdmin: req.session.isAdmin
+                });
+            })
         })
     }
 }

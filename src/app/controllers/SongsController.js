@@ -22,7 +22,14 @@ class songsController{
                 isAdmin: req.session.isAdmin
             });
         })
-        
+    };
+    destroy(req, res){
+        var id = req.params.id;
+        var sql = `DELETE FROM songs WHERE song_id = '${id}'`;
+        db.query(sql, function (err, result) {
+          if (err) throw err;
+          res.redirect('/songs');
+        });
     }
 }
 

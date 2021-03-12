@@ -22,12 +22,15 @@ class singersController{
 
             if (err) throw err;
             var kq = results;
-            
-            res.render('singerInfo',{
-                songs: kq,
-                name: req.session.name,
-                isAdmin: req.session.isAdmin
-            });
+            var sql1 = `SELECT * FROM singers WHERE singer_id = ${slug}`;
+            db.query(sql1, function(err, results) {
+                res.render('singerInfo',{
+                    songs: kq,
+                    singer: results,
+                    name: req.session.name,
+                    isAdmin: req.session.isAdmin
+                });
+            })
         })
     }
 }

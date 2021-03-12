@@ -168,7 +168,6 @@ $(document).ready(function(){
             this.parentElement.querySelector('label').classList.remove('label-act');
             this.parentElement.querySelector('span').classList.remove('req');
         }
-                this.parentElement.querySelector('.show-mess').classList.remove('show-mess');
     }
     $('.form-login input').keyup(handleEnter);
 
@@ -209,6 +208,7 @@ $(document).ready(function(){
         var link = $(this).attr('data-link');
         $('#audio').attr('src', link);
         player.play();
+        $('.btn-download a').attr('href', link); //Download
         var playerBtn = document.getElementById('playAudioBtn');
         if(playerBtn.classList.contains('la-play')){
             playerBtn.classList.replace('la-play', 'la-pause');
@@ -233,38 +233,45 @@ $(document).ready(function(){
     //Play next song
     function playNextSong(){
         var isRandom = document.getElementById('randomAudioBtn').classList.contains('selectBtn');
-        console.log(isRandom);
         var firstChild = $('.info-player .list').children();
         var numOfChild = firstChild.length;
-        var a = 0;
-        if(isRandom){
-            a = Math.floor((Math.random() * (numOfChild-1)) + 1)-1;
-        }
-        var link = $(firstChild[a]).attr('data-link');
-        $('#audio').attr('src', link);
-        player.play();
-        var playerBtn = document.getElementById('playAudioBtn');
-        if(playerBtn.classList.contains('la-play')){
-            playerBtn.classList.replace('la-play', 'la-pause');
-        }
-        var lyric = $(firstChild[a]).attr('data-lyric');
-        $('.lyric').text(lyric);
-        
-        var image = firstChild[a].querySelector('.thumbnail img').src;
-        var bg = `url(${image})`;
-        $('.bg-player').css('background-image', bg);
+        if(numOfChild!=0){
+            var a = 0;
+            if(isRandom){
+                a = Math.floor((Math.random() * (numOfChild-1)) + 1)-1;
+            }
+            var link = $(firstChild[a]).attr('data-link');
+            $('#audio').attr('src', link);
+            player.play();
+            var playerBtn = document.getElementById('playAudioBtn');
+            if(playerBtn.classList.contains('la-play')){
+                playerBtn.classList.replace('la-play', 'la-pause');
+            }
+            var lyric = $(firstChild[a]).attr('data-lyric');
+            $('.lyric').text(lyric);
+            
+            var image = firstChild[a].querySelector('.thumbnail img').src;
+            var bg = `url(${image})`;
+            $('.bg-player').css('background-image', bg);
 
-        var name = firstChild[a].querySelector('.column .nameSong').innerHTML;
-        var singer = firstChild[a].querySelector('.column .singer').innerHTML;
-        $('.music-player>.nameSong').text(name);
-        $('.music-player>.singer').text(singer);
-        if(numOfChild==1){
-            var nextAudio = "/Danh sách trống/";
+            var name = firstChild[a].querySelector('.column .nameSong').innerHTML;
+            var singer = firstChild[a].querySelector('.column .singer').innerHTML;
+            $('.music-player>.nameSong').text(name);
+            $('.music-player>.singer').text(singer);
+            if(numOfChild==1){
+                var nextAudio = "/Danh sách trống/";
+            }
+            else
+                var nextAudio = firstChild[a+1].querySelector('.column .nameSong').innerHTML;
+            $('.nextAudio h4').text(`Bài tiếp theo: ${nextAudio}`);
+            firstChild[a].remove();
         }
-        else
-            var nextAudio = firstChild[a+1].querySelector('.column .nameSong').innerHTML;
-        $('.nextAudio h4').text(`Bài tiếp theo: ${nextAudio}`);
-        firstChild[a].remove();
+        else{
+            player.currentTime = 0;
+            //player.play();
+            document.getElementById('playAudioBtn').classList.replace('la-pause', 'la-play');
+        }
+        
     }
     $('#nextAudioBtn').click(playNextSong);
 

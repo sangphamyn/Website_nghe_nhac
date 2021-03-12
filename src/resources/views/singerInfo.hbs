@@ -1,7 +1,19 @@
-<h3>Ca sĩ</h3>
+{{#each singer}}
+    <div class="row" style="display: flex; justify-content: space-between; margin-top: 1rem;">
+        <div class="bg" style="background-image: url(.{{this.singer_image}});width: 47.5%;
+        height: 300px;
+        background-position: center center;
+        background-size: cover;
+        border-radius: 1rem;"></div>
+        <div class="singerInfo" style="width: 47.5%;">
+            <h3>{{this.singer_name}}</h3>
+            <p>{{this.singer_namsinh}}</p>
+        </div>
+    </div>
+{{/each}}
 
 <div class="songshbs">
-    <h3 class="title">TẤT CẢ BÀI HÁT</h3>
+    <h3 class="title">BÀI HÁT</h3>
 
     <div class="list">
         {{#each songs}}
