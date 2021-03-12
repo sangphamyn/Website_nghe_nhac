@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const handlebars = require('express-handlebars');
-const port = 3000;
+const port = Number(process.env.PORT || 3000);
 const route = require('./routes');
 const methodOverride = require('method-override');
 app.use(express.static(path.join(__dirname, 'public')));
