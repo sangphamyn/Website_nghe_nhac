@@ -31,7 +31,7 @@ var storage1 = multer.diskStorage({
     },
     filename: function(req, file, callback) {
         rand_1 = file.originalname;
-        callback(null, rand1);
+        callback(null, rand_1);
     }
 })
 var upload = multer({storage: storage});
@@ -70,8 +70,8 @@ router.post('/uploadSong',upload.fields([{
 })
 //Upload Song//
 //Upload musician
-router.post('/uploadMusician',upload.single('imgMusician'), function(req, res) {
-    var link = './uploads/' + randM;
+router.post('/uploadMusician',upload1.single('imgMusician'), function(req, res) {
+    var link = './uploads/' + rand_1;
     inputData ={
         musician_image: link,
         musician_name: req.body.nameMusician,
@@ -117,8 +117,8 @@ router.post('/uploadMusician',upload.single('imgMusician'), function(req, res) {
 })
 //Upload musician//
 //Upload singer
-router.post('/uploadSinger',upload.single('imgSinger'), function(req, res) {
-    var link = './uploads/' + randM;
+router.post('/uploadSinger',upload1.single('imgSinger'), function(req, res) {
+    var link = './uploads/' + rand_1;
     inputData ={
         singer_image: link,
         singer_name: req.body.nameSinger,
