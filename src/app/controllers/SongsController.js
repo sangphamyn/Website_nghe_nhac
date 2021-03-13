@@ -15,9 +15,10 @@ class songsController{
                 fs.writeFile(`./src/public/uploads/${kq[i].song_name}.txt`, kq[i].song_lyric,  function(err) {
                 });
             }*/
-            
+            var songTab = 'song-tab';
             res.render('songs',{
                 songs: kq,
+                songTab: songTab,
                 name: req.session.name,
                 isAdmin: req.session.isAdmin
             });

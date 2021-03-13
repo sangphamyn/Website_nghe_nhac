@@ -3,7 +3,10 @@ var router = express.Router();
 var db=require('../database');
 
 router.get('/', function(req, res, next) {
-  res.render('login');
+    var loginTab = 'login-tab';
+  res.render('login',{
+      loginTab: loginTab
+  });
 });
 router.post('/', function(req, res){
     var emailAddress = req.body.email;
@@ -18,7 +21,7 @@ router.post('/', function(req, res){
             req.session.isAdmin = data[0].isAdmin;
             res.redirect('/');
         }else{
-            res.render('login',{alertMsg:"Your Email Address or password is wrong"});
+            res.render('login',{alertMsg:"Sai email hoặc mật khẩu"});
         }
     })
 })
@@ -35,14 +38,14 @@ router.post('/register', function(req, res, next) {
     db.query(sql, [inputData.email] ,function (err, data, fields) {
         if(err) throw err
         if(data.length>1){
-            var msg = inputData.email+ " was already exist";
+            var msg = inputData.email+ " đã tồn tại";
             res.render('login',{alertMsg_register:msg});
         }else{
             var sql = 'INSERT INTO users SET ?';
             db.query(sql, inputData, function (err, data) {
                 if (err) throw err;
             });
-            var msg ="Your are successfully registered";
+            var msg ="Đăng ký thành công";
             req.session.loggedinUser= true;
             req.session.name = req.body.name;
             res.redirect('/');

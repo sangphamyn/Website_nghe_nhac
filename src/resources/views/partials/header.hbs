@@ -1,33 +1,39 @@
-<div class="head-menu">
+
+<div class="side-menu">
+    <div class="home">
+        <div class="home-bg"></div>
+        <a href="/">nhaconline.com</a>
+    </div>
     <div class="wrap">
         <ul class="head-menu-list">
-            <li><a href="/">Trang chủ</a></li>
-            <li><a href="/songs">Bài hát</a></li>
-            <li><a href="/singers">Ca sĩ</a></li>
-            <li><a href="/musicians">Nhạc sĩ</a></li>
+            <li><a href="/" class="{{homeTab}}"><i class="las la-home"></i> Trang chủ</a></li>
+            <li><a href="/songs" class="{{songTab}}"><i class="las la-music"></i> Bài hát</a></li>
+            <li><a href="/singers" class="{{singerTab}}"><i class="las la-male"></i> Ca sĩ</a></li>
+            <li><a href="/musicians" class="{{musicianTab}}"><i class="las la-male"></i> Nhạc sĩ</a></li>
             {{#unless name}}
-                <li><a href="/login">Đăng nhập</a></li>
+                <li><a href="/login" class="{{loginTab}}"><i class="las la-user-circle"></i> Đăng nhập</a></li>
             {{/unless}}
             {{#if name}}
                 <div id="nameOfUser" style="position: relative;">
-                    {{name}}
-                    {{#if isAdmin}}
-                        <span id="admin">Admin</span>
-                    {{/if}}
+                    <p style="margin: 0; position: relative; width: fit-content">{{name}}
+                        {{#if isAdmin}}
+                            <span id="admin">Admin</span>
+                        {{/if}}
+                    </p>
                     <div class="user-select">
                         {{#if isAdmin}}
-                            <li><a href="/manager">Tải lên</a></li>
+                            <li><a href="/manager"><i class="las la-file-upload"></i> Tải lên</a></li>
                         {{/if}}
-                        <li><a href="/logout">Đăng xuất</a></li>
+                        <li><a href="/logout"><i class="las la-sign-out-alt"></i> Đăng xuất</a></li>
                     </div>
+                    <i class="las la-user-cog" style="position: absolute;top: 50%;transform: translateY(-50%);right: 10%;"></i>
                 </div>
             {{/if}}
+            <div class="mark-transparent hide-mark"></div>
         </ul>
     </div>
 </div>
-<div class="side-menu">
-    
-</div>
+<div class="mark hide-mark"></div>
 <div class="music-player">
     <div class="info-player" style="width: 90%; height: 57%; margin: 1rem auto; overflow:auto">
         <div class="bg-player show"></div>
@@ -39,9 +45,9 @@
         </div>
     </div>
     <div class="btn-gr">
-        <div class="btn btn-lyric"><i class="las la-microphone-alt"></i>Lời</div>
-        <div class="btn btn-list"><i class="las la-list"></i> Danh sách phát</div>
-        <div class="btn btn-download"><a download><i class="las la-download"></i> Tải</a></div>
+        <div class="btn btn-lyric"><i class="las la-microphone-alt"></i><p>Lời</p></div>
+        <div class="btn btn-list"><i class="las la-list"></i> <p>Danh sách phát</p></div>
+        <div class="btn btn-download"><a download><i class="las la-download"></i> <p>Tải</p></a></div>
     </div>
     <h2 style="margin: 1rem" class="nameSong"></h2>
     <h4 style="margin: 0 1rem; font-weight: 400" class="singer"></h4>

@@ -1,4 +1,4 @@
-$textColorWhite: #f4f6f8e0;
+$textColorWhite: #c7c9cae0;
 $textColor: #f4f6f880;
 * {
     font-family: 'Quicksand', sans-serif;
@@ -17,44 +17,6 @@ body{
     padding: 0;
 }
 
-.head-menu{
-    margin-left: 20%;
-    width: 50%;
-    height: 50px;
-    background: #000;
-    .wrap{
-        width: 100%;
-        height: 100%;
-        .head-menu-list{
-            width: 100%;
-            height: 100%;
-            margin: auto;
-            padding: 0;
-            list-style: none;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            align-items: center;
-            li{
-                height: 100%;
-                padding: 0 0rem;
-                a{
-                    display: flex;
-                    align-items: center;
-                    padding: 0 1rem;
-                    width: 100%;
-                    height: 100%;
-                    text-decoration: none;
-                    transition: 0.2s;
-                    &:hover{
-                        color: #31ff31;
-                        transition: 0.2s;
-                    }
-                }
-            }
-        }
-    }
-}
 .side-menu{
     position: fixed;
     top: 0;
@@ -62,7 +24,63 @@ body{
     width: 20%;
     height: 100vh;
     border-right: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    .home{
+        margin: 1rem 0;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        .home-bg{
+            background-image: url(../img/bg.jpg);
+            width: 80px;
+            height: 40px;
+            background-size: 100%;
+            background-repeat: no-repeat;
+            background-position: center center;
+            border-radius: 1rem;
+            margin-right: 10px;
+        }
+    }
+    .wrap{
+        height: 80%;
+        .head-menu-list{
+            height: 100%;
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            li{
+                a{
+                    display: block;
+                    padding: 1rem;
+                    width: 100%;
+                    height: 100%;
+                    //background-color: #000;
+                    transition: 0.2s;
+                    position: relative;
+                    &:hover{
+                        background-color: rgba(244,246,248,0.05);
+                        transition: 0.2s;
+                    }
+                }
+            }
+        }
+    }
 }
+.song-tab,.singer-tab,.home-tab,.musician-tab,.login-tab{
+    background-color: rgba(244,246,248,0.05);
+    &::before{
+        content: '';
+        position: absolute;
+        width: 5px;
+        top: 0;
+        left: 0;
+        height: 100%;
+        background-color: #31ff31;
+    }
+}
+
 .music-player{
     position: fixed;
     top: 0;
@@ -174,7 +192,7 @@ body{
                         height: 15px;
                         border-radius: 50%;
                         border: 2px solid #31ff31;
-                        background: #fff;
+                        background: $textColorWhite;
                         position: absolute;
                         top: 50%;
                         right: -10px;
@@ -204,9 +222,6 @@ body{
                     .selectBtn{
                         color: #31ff31;
                     }
-                    #playAudioBtn, #volumeAudioBtn{
-                        width: 40px;
-                    }
                     .changeVol{
                         visibility: hidden;
                         opacity: 0;
@@ -225,7 +240,7 @@ body{
                             width: 10px;
                             margin: 0 auto;
                             border-radius: 1.8rem 1.8rem;
-                            background: #fff;
+                            background: $textColorWhite;
                             position: relative;
                             .progressVol{
                                 height: 100%;
@@ -243,7 +258,7 @@ body{
                                 height: 20px;
                                 border-radius: 50%;
                                 border: 2px solid #31ff31;
-                                background: #fff;
+                                background: $textColorWhite;
                                 position: absolute;
                                 top: -0.5rem;
                                 right: 50%;
@@ -268,7 +283,8 @@ body{
 .container{
     margin-left: 20%;
     width: 50%;
-    height: 1000px;
+    height: 100vh;
+    overflow: auto;
 }
 .unselectable {
     -moz-user-select: -moz-none;
@@ -298,8 +314,15 @@ body{
     border-radius: 1.8rem 1.8rem;
     height: fit-content;
     background-color: #000000;
-    color: #fff;
+    color: $textColorWhite;
     transition: 0.2s;
+    a{
+        display: flex;
+        flex-direction: row;
+    }
+    p{
+        margin: 0;
+    }
     &:hover{
         background-color: rgb(0, 89, 255);
         transition: 0.2s;
@@ -372,15 +395,15 @@ background: rgb(0, 192, 192);
     }
     .tab>a:hover {
         background: #179b77;
-        color: #fff;
+        color: $textColorWhite;
     }
     .active a {
         background: #1ab188;
-        color: #fff;
+        color: $textColorWhite;
     }
     h1 {
         text-align: center;
-        color: #fff;
+        color: $textColorWhite;
         font-weight: 300;
     }
     .field-wrap {
@@ -411,7 +434,7 @@ background: rgb(0, 192, 192);
     input {
         display: block;
         background: none;
-        color: #fff;
+        color: $textColorWhite;
         height: 3rem;
         width: 100%;
         border: 1px solid #a0b3b0;
@@ -429,7 +452,7 @@ background: rgb(0, 192, 192);
         height: auto;
         text-transform: uppercase;
         background: #1ab188;
-        color: #fff;
+        color: $textColorWhite;
         font-size: 2.7rem;
         padding: 0.5rem;
         font-weight: 300;
@@ -460,7 +483,7 @@ background: rgb(0, 192, 192);
         transition: .5s;
     }
     .highlight {
-        color: #fff;
+        color: $textColorWhite;
     }
     button {
         cursor: pointer;
@@ -480,24 +503,25 @@ background: rgb(0, 192, 192);
         font-size: 11px;
         color: #000;
         position: absolute;
-        top: 10px;
-        right: -20px;
+        top: 0px;
+        right: -100%;
     }
-    &:hover .user-select{
-         visibility: visible;
-         opacity: 1;
-         transform: translateY(-20px);
-         transition: 0.3s;
-         pointer-events:visible ;
-    }
+}
+.show-user-select{
+    visibility: visible !important;
+    opacity: 1 !important;
+    transform: translateY(-20px);
+    transition: 0.3s;
+    pointer-events:visible !important;
 }
 .user-select{
     background: #000;
     border-radius: 0.3rem;
     position: absolute;
+    z-index: 1000;
     top: 70px;
-    left: -10px;
-    width: 120px;
+    right: 0;
+    width: 150px;
     transition: 0.3s;
     visibility: hidden;
     opacity: 0;
@@ -508,6 +532,11 @@ background: rgb(0, 192, 192);
         padding: 0.5rem !important;
         a{
             padding: 0 !important;
+            transition: 0.2s;
+            &:hover{
+                color: #31ff31;
+                transition: 0.2s;
+            }
         }
     }
 }
@@ -559,7 +588,7 @@ background: rgb(0, 192, 192);
         justify-content: center;
         align-items: center;
         cursor: pointer;
-        color: #fff;
+        color: $textColorWhite;
         transition: 0.2s;
         &:hover{
             background-color: #1d961d;
@@ -685,7 +714,7 @@ select, option{
     top: 10vh;
     left: 50%;
     transform: translateX(-50%);
-    background-color: #fff;
+    background-color: $textColorWhite;
     border: 1px solid #000;
     width: 400px;
     height: 150px;
@@ -704,7 +733,7 @@ select, option{
         }
         button{
             span{
-                color: #fff;
+                color: $textColorWhite;
             }
         }
     }
@@ -735,10 +764,87 @@ select, option{
 .hide-mark{
     display: none;
 }
-#mySearch {
+.mark-transparent{
+    position: fixed;
+    z-index: 100;
+    top: 0;
+    left: 0;
     width: 100%;
+    height: 100%;
+    background-color: transparent;
+}
+#mySearch {
+    width: 50%;
     font-size: 18px;
     padding: 11px;
     border: 1px solid #ddd;
+    color: $textColorWhite;
+    background: transparent;
+    &:focus{
+        outline: none;
+        border-color: #31ff31;
+    }
+}
+select#musician,select#singer{
     color: #000;
+    padding: 0.5rem;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    width: 60%;
+}
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 1px;
+    text-overflow: '';
+}
+
+@media (max-width: 1320px){
+    .music-player{
+        .btn-gr{
+            .btn{
+                a{
+                    display: flex;
+                    flex-direction: row;
+                }
+                p{
+                    display: none;
+                }
+            }
+        }
+        h2{
+            font-size: 1rem;
+        }
+        .nextAudio{
+            h4{
+                font-size: 0.8rem;
+                margin: 1rem 0.5rem;
+            }
+        }
+    }
+}
+
+
+@media (max-width: 1490px){
+    .songshbs{
+        .list{
+            .list-song{
+                .row{
+                    .addPlaylist{
+                        span{
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .container{
+        .musicianhbs{
+            .musicianInfor{
+                width: 50%;
+            }
+        }
+    }
 }

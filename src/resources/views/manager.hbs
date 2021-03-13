@@ -29,14 +29,18 @@
         <div class="col-6">
             <p>Nhạc sĩ: </p>
             <select name="nameArtist" id="musician" onchange="this.form.submit()" required>
+                <option value="">Chọn nhạc sĩ</option>
                 {{#each musicians}}
                 <option value="{{this.musician_id}}">{{this.musician_name}}</option>
                 {{/each}}
+                
             </select>
+            
         </div>
         <div class="col-6">
             <p>Ca sĩ: </p>
             <select name="nameSinger" id="singer" required>
+                <option value="">Chọn ca sĩ</option>
                 {{#each singers}}
                 <option value="{{this.singer_id}}">{{this.singer_name}}</option>
                 {{/each}}

@@ -7,9 +7,11 @@ class musiciansController{
 
             if (err) throw err;
             var kq = results;
-            
+            var musicianTab = 'musician-tab';
+
             res.render('musicians',{
                 musicians: kq,
+                musicianTab: musicianTab,
                 name: req.session.name,
                 isAdmin: req.session.isAdmin
             });

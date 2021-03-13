@@ -280,4 +280,15 @@ $(document).ready(function(){
         event.stopPropagation();
         $(this).parent().remove();
     })
+
+    $('#nameOfUser').click(function(){
+        $('.user-select').addClass('show-user-select');
+        $('.mark-transparent').removeClass('hide-mark');
+        $('.mark-transparent').click(function(){
+            console.log('sang');
+            $(this).addClass('hide-mark');
+            $('.show-user-select').removeClass('show-user-select');
+        })
+    })
+    
 })

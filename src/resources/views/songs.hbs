@@ -1,5 +1,5 @@
 <div class="songshbs">
-    <input type="text" id="mySearch" placeholder="Nhập tên bài hát" style="width: 50%;outline-color: #31ff31">
+    <input type="text" id="mySearch" placeholder="Nhập tên bài hát">
 
     <h3 class="title">TẤT CẢ BÀI HÁT</h3>
 
@@ -14,7 +14,7 @@
                 <a href="/singers/{{this.singer_id}}" class="singer">{{this.singer_name}}</a>
             </div>
             <div class="row">
-                <div class="addPlaylist btn">Thêm vào chờ phát</div>
+                <div class="addPlaylist btn"><i class="las la-plus-circle"></i><span>Thêm vào chờ phát</span></div>
                 {{#if ../isAdmin}}
                     <a type="button" class="delSong btn" data-id="{{this.song_id}}" data-target="#delete">Xóa</a>
                 {{/if}}
@@ -42,7 +42,6 @@
 </div>
 
 <form method="POST" name="delete-form"></form>
-<div class="mark hide-mark"></div>
 <script>
     document.addEventListener('DOMContentLoaded', function(){
         var id;

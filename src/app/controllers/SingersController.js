@@ -7,9 +7,10 @@ class singersController{
 
             if (err) throw err;
             var kq = results;
-            
+            var singerTab = 'singer-tab';
             res.render('singers',{
                 singers: kq,
+                singerTab: singerTab,
                 name: req.session.name,
                 isAdmin: req.session.isAdmin
             });
@@ -23,6 +24,7 @@ class singersController{
             if (err) throw err;
             var kq = results;
             var sql1 = `SELECT * FROM singers WHERE singer_id = ${slug}`;
+            
             db.query(sql1, function(err, results) {
                 res.render('singerInfo',{
                     songs: kq,
