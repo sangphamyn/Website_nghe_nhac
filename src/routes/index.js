@@ -12,7 +12,7 @@ function route(app){
         secret: '123456cat',
         resave: false,
         saveUninitialized: true,
-        cookie: { maxAge: 60000 }
+        cookie: { maxAge: 7200000 }
     }))
     app.use('/manager', managerRouter);
     app.use('/login', loginRouter);
