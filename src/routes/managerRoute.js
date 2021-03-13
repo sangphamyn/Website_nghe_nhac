@@ -108,7 +108,7 @@ router.post('/uploadMusician',upload.single('imgMusician'), function(req, res) {
 //Upload musician//
 //Upload singer
 router.post('/uploadSinger',upload.single('imgSinger'), function(req, res) {
-    var link = './uuploads/' + randM;
+    var link = './uploads/' + randM;
     inputData ={
         singer_image: link,
         singer_name: req.body.nameSinger,
