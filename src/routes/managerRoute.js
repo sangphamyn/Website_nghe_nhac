@@ -24,18 +24,8 @@ var storage = multer.diskStorage({
         callback(null, rand);
     }
 })
-var rand_1;
-var storage1 = multer.diskStorage({
-    destination: function(req, file, callback) {
-        callback(null, './src/public/uploads')
-    },
-    filename: function(req, file, callback) {
-        rand_1 = file.originalname;
-        callback(null, rand_1);
-    }
-})
 var upload = multer({storage: storage});
-var upload1 = multer({storage: storage1});
+
 router.post('/uploadSong',upload.fields([{
     name: 'userbg', maxCount: 1
 },{
@@ -70,8 +60,8 @@ router.post('/uploadSong',upload.fields([{
 })
 //Upload Song//
 //Upload musician
-router.post('/uploadMusician',upload1.single('imgMusician'), function(req, res) {
-    var link = './uploads/' + rand_1;
+router.post('/uploadMusician',upload.single('imgMusician'), function(req, res) {
+    var link = './uploads/' + randM;
     inputData ={
         musician_image: link,
         musician_name: req.body.nameMusician,
@@ -117,8 +107,8 @@ router.post('/uploadMusician',upload1.single('imgMusician'), function(req, res) 
 })
 //Upload musician//
 //Upload singer
-router.post('/uploadSinger',upload1.single('imgSinger'), function(req, res) {
-    var link = './uploads/' + rand_1;
+router.post('/uploadSinger',upload.single('imgSinger'), function(req, res) {
+    var link = './uploads/' + randM;
     inputData ={
         singer_image: link,
         singer_name: req.body.nameSinger,
